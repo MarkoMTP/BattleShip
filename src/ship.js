@@ -6,6 +6,7 @@ export default function Ship(length, hitTimes = 0, isSunk = false) {
 
     isHit() {
       this.hitTimes++;
+
       return this.hitTimes;
     },
 
@@ -18,12 +19,3 @@ export default function Ship(length, hitTimes = 0, isSunk = false) {
 
   };
 }
-
-const mojBrod = new Ship(3);
-
-mojBrod.isHit();
-mojBrod.isHit();
-mojBrod.isHit();
-
-console.log(mojBrod.hitTimes);
-console.log(mojBrod.isItSunk());
