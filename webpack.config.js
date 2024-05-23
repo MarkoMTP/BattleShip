@@ -8,12 +8,22 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Output Management',
+      template: './index.html',
     }),
   ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 9000,
+    hot: true,
+    open: true,
   },
   module: {
     rules: [

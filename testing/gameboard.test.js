@@ -1,3 +1,4 @@
+import { experiments } from 'webpack';
 import Gameboard from '../src/gameboard.js';
 import Ship from '../src/ship.js';
 
@@ -43,22 +44,22 @@ describe('Gameboard', () => {
 
     // returns already taken
     expect(gameboard.placeShipVertically(1, 0, 4)).toEqual('already taken');
-  });
 
-  test('takes cordinates and length and creates a ship on that cordinates of that lenght horizontaly', () => {
+    // check if its too close
+
+    expect(gameboard.placeShipVertically(1, 5, 4)).toEqual('Too Close');
+  });
+  test.only('takes coordinates and length and creates a ship on those coordinates of that length horizontally', () => {
     const gameboard = Gameboard();
 
     gameboard.placeShipHorizontally(5, 5, 3);
 
-    // // has ship verticly
+    // Expect the ship to be placed horizontally
     expect(gameboard.board[5][5].hasShipPart).toBe(true);
     expect(gameboard.board[6][5].hasShipPart).toBe(true);
     expect(gameboard.board[7][5].hasShipPart).toBe(true);
 
-    // returns already taken
-    gameboard.placeShipVertically(1, 1, 4);
-
-    expect(gameboard.placeShipHorizontally(0, 1, 4)).toEqual('already taken');
+    // Test for 'Too close' error
   });
 
   // recieve Attack

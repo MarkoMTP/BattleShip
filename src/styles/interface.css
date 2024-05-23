@@ -15,7 +15,6 @@ body {
 }
 
 #container {
-  border: 1px red solid;
   display: flex;
   justify-content: space-around;
 }
@@ -60,4 +59,12 @@ body {
   margin: 0; /* Ensure no default margin */
   padding: 0; /* Ensure no default padding */
   width: fit-content;
+}
+
+.playGameBtn {
+  margin-top: 5rem;
+  width: 20rem;
+  height: 10rem;
+  font-size: 3rem;
+  cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import randomGame from './randomGame';
-import displayBoard from './displayBoard';
+import displayBoard, { displayBoardComp } from './displayBoard';
 import './styles/interface.css';
 
 const game = randomGame();

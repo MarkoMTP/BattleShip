@@ -25,7 +25,7 @@ describe('Computer', () => {
   });
 
   // place Test
-  test.only(' placing a ship on player board', () => {
+  test(' placing a ship on player board', () => {
     const comp = new Computer('');
     comp.gameboard.placeShipVertically(1, 1, 3);
     expect(comp.gameboard.board[1][3].hasShipPart).toBe(true);

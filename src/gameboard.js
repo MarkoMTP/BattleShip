@@ -29,6 +29,7 @@ export default function Gameboard(board = []) {
           return 'already taken';
         }
       }
+      if (board[a][b + 1].hasShipPart || board[a][b - 1].hasShipPart) return 'Too Close';
 
       const ship = new Ship(length);
       this.ships.push(ship);
