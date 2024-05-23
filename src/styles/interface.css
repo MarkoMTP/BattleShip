@@ -1,0 +1,63 @@
+/* div {
+  border: 1px black solid;
+} */
+body {
+  margin: 0; /* Remove default margin */
+  background-color: rgb(191, 239, 239);
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+#title {
+  color: rgb(0, 0, 0);
+}
+
+#container {
+  border: 1px red solid;
+  display: flex;
+  justify-content: space-around;
+}
+
+.boardPlayer {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2px; /* Adjust the gap between cells */
+  margin: 0; /* Ensure no default margin */
+  padding: 0; /* Ensure no default padding */
+  width: fit-content;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin: 0; /* Ensure no default margin */
+  padding: 0; /* Ensure no default padding */
+}
+
+.cellHasShip {
+  background-color: rgb(4, 0, 255);
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin: 0; /* Ensure no default margin */
+  padding: 0;
+}
+.cell:hover {
+  background-color: red;
+}
+
+.boardComputer {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2px; /* Adjust the gap between cells */
+  margin: 0; /* Ensure no default margin */
+  padding: 0; /* Ensure no default padding */
+  width: fit-content;
+}
