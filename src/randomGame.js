@@ -35,7 +35,24 @@ export default function randomGame() {
       }
     }
   }
+  for (const size of shipSizes) {
+    let placed = false;
+    while (!placed) { // Keep trying until the ship is successfully placed
+      const a = getRandomInt(0, 9);
+      const b = getRandomInt(0, 9);
 
+      // Randomly choose between vertical or horizontal placement
+      const placementFunction = randomizeFunc(
+        () => player.gameboard.placeShipVertically(a, b, size),
+        () => player.gameboard.placeShipHorizontally(a, b, size),
+      );
+
+      const result = placementFunction();
+      if (result !== 'Out Of Bounds' && result !== 'Too Close') {
+        placed = true;
+      }
+    }
+  }
   return {
     computer,
     player,
