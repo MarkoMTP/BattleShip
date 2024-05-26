@@ -68,3 +68,7 @@ body {
   font-size: 3rem;
   cursor: pointer;
 }
+
+.hasBlock {
+  background-color: pink;
+}

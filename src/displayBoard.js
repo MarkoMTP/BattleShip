@@ -12,6 +12,9 @@ export default function displayBoard(board, divCont) {
       if (col.hasShipPart) {
         cell.classList.add('cellHasShip');
       }
+      if (col.hasBlock) {
+        cell.classList.add('hasBlock');
+      }
 
       // cell.addEventListener('click', () => {
       //   handleCellClick(board, rowIndex, colIndex, cell);

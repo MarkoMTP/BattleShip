@@ -31,25 +31,31 @@ describe('Gameboard', () => {
   });
 
   // placeShip
-  test('takes cordinates and length and creates a ship on that cordinates of that lenght verticly', () => {
+  test.only('takes cordinates and length and creates a ship on that cordinates of that lenght verticly', () => {
     const gameboard = Gameboard();
 
-    gameboard.placeShipVertically(1, 1, 4);
+    gameboard.placeShipVertically(5, 5, 3);
 
     // has ship verticly
-    expect(gameboard.board[1][1].hasShipPart).toBe(true);
-    expect(gameboard.board[1][2].hasShipPart).toBe(true);
-    expect(gameboard.board[1][3].hasShipPart).toBe(true);
-    expect(gameboard.board[1][4].hasShipPart).toBe(true);
+    expect(gameboard.board[5][5].hasShipPart).toBe(true);
+    expect(gameboard.board[5][6].hasShipPart).toBe(true);
+    expect(gameboard.board[5][7].hasShipPart).toBe(true);
+
+    // has block
+    expect(gameboard.board[4][7].hasBlock).toBe(true);
+    expect(gameboard.board[6][7].hasBlock).toBe(true);
 
     // returns already taken
-    expect(gameboard.placeShipVertically(1, 0, 4)).toEqual('already taken');
+    expect(gameboard.placeShipVertically(5, 1, 5)).toEqual('Too Close');
 
     // check if its too close
 
-    expect(gameboard.placeShipVertically(1, 5, 4)).toEqual('Too Close');
+    expect(gameboard.placeShipVertically(5, 1, 3)).toEqual('Too Close');
+
+    // check horizontally
+    expect(gameboard.placeShipHorizontally(2, 5, 2)).toEqual('Too Close');
   });
-  test.only('takes coordinates and length and creates a ship on those coordinates of that length horizontally', () => {
+  test('takes coordinates and length and creates a ship on those coordinates of that length horizontally', () => {
     const gameboard = Gameboard();
 
     gameboard.placeShipHorizontally(5, 5, 3);
@@ -59,7 +65,14 @@ describe('Gameboard', () => {
     expect(gameboard.board[6][5].hasShipPart).toBe(true);
     expect(gameboard.board[7][5].hasShipPart).toBe(true);
 
+    // hasblock for surroonding cells
+    expect(gameboard.board[7][4].hasBlock).toBe(true);
+    expect(gameboard.board[8][6].hasBlock).toBe(true);
+    expect(gameboard.board[4][4].hasBlock).toBe(true);
+
     // Test for 'Too close' error
+    expect(gameboard.placeShipHorizontally(1, 4, 3)).toEqual('Too Close');
+    expect(gameboard.placeShipHorizontally(3, 5, 1)).toEqual('Too Close');
   });
 
   // recieve Attack

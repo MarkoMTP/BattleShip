@@ -6,13 +6,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function randomizeBetweenTwoFunctions(func1, func2) {
+function randomizeFunc(func1, func2) {
   const randomChoice = Math.floor(Math.random() * 2);
-
-  if (randomChoice === 0) {
-    return func1; // Just return the function, not calling it
-  }
-  return func2; // Just return the function, not calling it
+  return randomChoice === 0 ? func1 : func2;
 }
 
 export default function randomGame() {
@@ -21,24 +17,25 @@ export default function randomGame() {
 
   const shipSizes = [6, 5, 4, 3, 2, 1]; // An array of ship sizes
 
-  for (const size of shipSizes) { // Loop through each ship size
-    let placed = false; // Flag to indicate if the ship is successfully placed
+  for (const size of shipSizes) {
+    let placed = false;
     while (!placed) { // Keep trying until the ship is successfully placed
-      const a = getRandomInt(0, 9); // Adjusted to ensure ships fit within board
-      const b = getRandomInt(0, 9); // Adjusted to ensure ships fit within board
+      const a = getRandomInt(0, 9);
+      const b = getRandomInt(0, 9);
 
       // Randomly choose between vertical or horizontal placement
-      const placementFunction = randomizeBetweenTwoFunctions(
-        () => computer.gameboard.placeShipVertically(a, b, size), // Callback to place vertically
-        () => computer.gameboard.placeShipHorizontally(a, b, size), // Callback to place horizontally
+      const placementFunction = randomizeFunc(
+        () => computer.gameboard.placeShipVertically(a, b, size),
+        () => computer.gameboard.placeShipHorizontally(a, b, size),
       );
 
-      const result = placementFunction(); // Call the chosen placement function
-      if (result !== 'out of bounds' && result !== 'already taken') {
-        placed = true; // Mark the ship as successfully placed
+      const result = placementFunction();
+      if (result !== 'Out Of Bounds' && result !== 'Too Close') {
+        placed = true;
       }
     }
   }
+
   return {
     computer,
     player,
