@@ -7,52 +7,36 @@ function getRandomInt(min, max) {
 }
 
 function randomizeFunc(func1, func2) {
-  const randomChoice = Math.floor(Math.random() * 2);
-  return randomChoice === 0 ? func1 : func2;
+  return Math.random() < 0.5 ? func1 : func2;
+}
+
+function placeShips(gameboard, shipSizes) {
+  for (const size of shipSizes) {
+    let placed = false;
+    while (!placed) {
+      const a = getRandomInt(0, 9);
+      const b = getRandomInt(0, 9);
+      const placementFunction = randomizeFunc(
+        () => gameboard.placeShipVertically(a, b, size),
+        () => gameboard.placeShipHorizontally(a, b, size),
+      );
+      const result = placementFunction();
+      if (result !== 'Out Of Bounds' && result !== 'Too Close') {
+        placed = true;
+      }
+    }
+  }
 }
 
 export default function randomGame() {
   const computer = new Computer();
   const player = new realPlayer('Marko');
 
-  const shipSizes = [6, 5, 4, 3, 2, 1]; // An array of ship sizes
+  const shipSizes = [6, 5, 4, 3, 2, 1];
 
-  for (const size of shipSizes) {
-    let placed = false;
-    while (!placed) { // Keep trying until the ship is successfully placed
-      const a = getRandomInt(0, 9);
-      const b = getRandomInt(0, 9);
+  placeShips(computer.gameboard, shipSizes);
+  placeShips(player.gameboard, shipSizes);
 
-      // Randomly choose between vertical or horizontal placement
-      const placementFunction = randomizeFunc(
-        () => computer.gameboard.placeShipVertically(a, b, size),
-        () => computer.gameboard.placeShipHorizontally(a, b, size),
-      );
-
-      const result = placementFunction();
-      if (result !== 'Out Of Bounds' && result !== 'Too Close') {
-        placed = true;
-      }
-    }
-  }
-  for (const size of shipSizes) {
-    let placed = false;
-    while (!placed) { // Keep trying until the ship is successfully placed
-      const a = getRandomInt(0, 9);
-      const b = getRandomInt(0, 9);
-
-      // Randomly choose between vertical or horizontal placement
-      const placementFunction = randomizeFunc(
-        () => player.gameboard.placeShipVertically(a, b, size),
-        () => player.gameboard.placeShipHorizontally(a, b, size),
-      );
-
-      const result = placementFunction();
-      if (result !== 'Out Of Bounds' && result !== 'Too Close') {
-        placed = true;
-      }
-    }
-  }
   return {
     computer,
     player,

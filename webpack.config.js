@@ -18,12 +18,16 @@ module.exports = {
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.resolve(__dirname, 'dist'),
     },
-    compress: true,
-    port: 9000,
-    hot: true,
+    port: 3000,
     open: true,
+    hot: true,
+
+  },
+  watchOptions: {
+    aggregateTimeout: 300, // delay before rebuilding
+    poll: 1000, // check for changes every second
   },
   module: {
     rules: [

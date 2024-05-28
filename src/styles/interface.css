@@ -49,6 +49,7 @@ body {
 }
 .cell:hover {
   background-color: red;
+  cursor: pointer;
 }
 
 .boardComputer {
@@ -70,5 +71,12 @@ body {
 }
 
 .hasBlock {
-  background-color: pink;
+  background-color: rgb(242, 214, 219);
+}
+
+.resetBtn {
+  width: 10rem;
+  height: 5rem;
+  font-size: 1.8rem;
+  cursor: pointer;
 }
