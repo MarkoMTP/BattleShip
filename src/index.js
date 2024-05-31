@@ -1,6 +1,6 @@
 import displayGame from './interface';
 import './styles/interface.css';
-import randomGame from './randomGame';
+import placeShips, { randomComputerOnly } from './randomGame';
 
 const container = document.getElementById('container');
 
@@ -9,7 +9,7 @@ playGameBtn.classList.add('playGameBtn');
 playGameBtn.textContent = 'Play Game';
 playGameBtn.addEventListener('click', () => {
   container.innerHTML = ''; // Clear the container
-  displayGame(randomGame());
+  displayGame(randomComputerOnly());
 });
 
 container.appendChild(playGameBtn);

@@ -1,0 +1,17 @@
+body {
+  margin: 0; /* Remove default margin */
+  background-color: rgb(191, 239, 239);
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+#title {
+  color: rgb(0, 0, 0);
+}
+
+#container {
+  display: flex;
+  justify-content: space-around;
+}

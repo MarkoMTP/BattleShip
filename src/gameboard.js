@@ -3,17 +3,18 @@ import Ship from './ship';
 export default function Gameboard(board = []) {
   const ships = [];
   // Step 1: Create the Board
-  for (let row = 0; row < 10; row++) {
-    const rowArray = [];
-    for (let col = 0; col < 10; col++) {
-      const cell = {
-        row, col, object: null, hasShipPart: false, wasHit: false, hasBlock: false,
-      };
-      rowArray.push(cell);
+  if (board.length === 0) {
+    for (let row = 0; row < 10; row++) {
+      const rowArray = [];
+      for (let col = 0; col < 10; col++) {
+        const cell = {
+          row, col, object: null, hasShipPart: false, wasHit: false, hasBlock: false,
+        };
+        rowArray.push(cell);
+      }
+      board.push(rowArray);
     }
-    board.push(rowArray);
   }
-
   // Step 2: Return the Board
   return {
     board,

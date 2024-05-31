@@ -1,26 +1,28 @@
 import displayBoard from './displayBoard';
-import './styles/interface.css';
 import randomGame from './randomGame';
+import './styles/interface.css';
 
 export default function displayGame(game) {
   const container = document.getElementById('container');
   container.innerHTML = ''; // Clear the container at the start
 
-  const playerBoard = game.player.gameboard.board;
-  const computerBoard = game.computer.gameboard.board;
-
   // Reset button
-  const resetBtn = document.createElement('button');
-  resetBtn.classList.add('resetBtn');
-  resetBtn.textContent = 'Reset Game';
-  resetBtn.addEventListener('click', () => {
+  const randomBtn = document.createElement('button');
+  randomBtn.classList.add('randomBtn');
+  randomBtn.textContent = 'Random Placement';
+  randomBtn.addEventListener('click', () => {
     container.innerHTML = '';
     displayGame(randomGame());
   });
 
+  // // place ship
+  // const placeShip = document.createElement('button');
+  // placeShip.classList.add('randomBtn');
+  // placeShip.textContent = 'Place Ship';
+
   // Titles
   const playerBoardTitle = document.createElement('h1');
-  playerBoardTitle.textContent = 'Player Board';
+  playerBoardTitle.textContent = `${game.player.name}'s Board`;
   playerBoardTitle.classList.add('playerTitle');
   const compBoardTitle = document.createElement('h1');
   compBoardTitle.textContent = 'Computer Board';
@@ -33,8 +35,7 @@ export default function displayGame(game) {
   computerBoardDiv.classList.add('boardComputer');
 
   // Place boards inside div
-  displayBoard(playerBoard, playerBoardDiv);
-  displayBoard(computerBoard, computerBoardDiv);
+  displayBoard(game, playerBoardDiv, computerBoardDiv);
 
   // Div to put them both in
   const divPlayer = document.createElement('div');
@@ -47,6 +48,8 @@ export default function displayGame(game) {
   compDiv.appendChild(computerBoardDiv);
 
   container.appendChild(divPlayer);
-  container.appendChild(resetBtn);
+  container.appendChild(randomBtn);
+  // container.appendChild(placeShip);
+
   container.appendChild(compDiv);
 }

@@ -78,3 +78,19 @@ export default function randomGame() {
     player,
   };
 }
+
+export function randomComputerOnly() {
+  const computer = new Computer();
+  const player = new realPlayer('Marko');
+
+  const shipSizes = [6, 5, 4, 3, 2, 1];
+
+  console.log('Placing ships for computer...');
+  computer.gameboard = placeShips(() => new Computer().gameboard, shipSizes);
+  console.log('Computer ships placed.');
+
+  return {
+    computer,
+    player,
+  };
+}
