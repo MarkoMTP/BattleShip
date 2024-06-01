@@ -19,7 +19,6 @@ function placeShips(createGameboard, shipSizes) {
   while (overallAttempts < maxOverallAttempts) {
     let allShipsPlaced = true;
     const gameboard = createGameboard();
-
     for (const size of shipSizes) {
       let placed = false;
       let attempts = 0; // Add an attempt counter
@@ -65,13 +64,9 @@ export default function randomGame() {
 
   const shipSizes = [6, 5, 4, 3, 2, 1];
 
-  console.log('Placing ships for computer...');
-  computer.gameboard = placeShips(() => new Computer().gameboard, shipSizes); // Create a new gameboard instance
-  console.log('Computer ships placed.');
+  computer.gameboard = placeShips(() => new Computer().gameboard, shipSizes);
 
-  console.log('Placing ships for player...');
   player.gameboard = placeShips(() => new realPlayer('Marko').gameboard, shipSizes); // Create a new gameboard instance
-  console.log('Player ships placed.');
 
   return {
     computer,
@@ -85,9 +80,7 @@ export function randomComputerOnly() {
 
   const shipSizes = [6, 5, 4, 3, 2, 1];
 
-  console.log('Placing ships for computer...');
   computer.gameboard = placeShips(() => new Computer().gameboard, shipSizes);
-  console.log('Computer ships placed.');
 
   return {
     computer,

@@ -1,15 +1,24 @@
 import displayGame from './interface';
 import './styles/interface.css';
-import placeShips, { randomComputerOnly } from './randomGame';
+import randomGame, { randomComputerOnly } from './randomGame';
 
 const container = document.getElementById('container');
 
-const playGameBtn = document.createElement('button');
-playGameBtn.classList.add('playGameBtn');
-playGameBtn.textContent = 'Play Game';
-playGameBtn.addEventListener('click', () => {
+const playRandomGameBtn = document.createElement('button');
+playRandomGameBtn.classList.add('playRandomGameBtn');
+playRandomGameBtn.textContent = 'Random Game';
+playRandomGameBtn.addEventListener('click', () => {
   container.innerHTML = ''; // Clear the container
-  displayGame(randomComputerOnly());
+  displayGame(randomGame());
 });
 
-container.appendChild(playGameBtn);
+const placeShips = document.createElement('button');
+placeShips.classList.add('playRandomGameBtn');
+placeShips.textContent = 'Place Ships';
+placeShips.addEventListener('click', () => {
+  container.innerHTML = ''; // Clear the container
+  displayGame(randomGame());
+});
+
+container.appendChild(playRandomGameBtn);
+container.appendChild(placeShips);

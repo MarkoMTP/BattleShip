@@ -7,6 +7,7 @@ export default function displayGame(game) {
   container.innerHTML = ''; // Clear the container at the start
 
   // Reset button
+  const middleDiv = document.createElement('div');
   const randomBtn = document.createElement('button');
   randomBtn.classList.add('randomBtn');
   randomBtn.textContent = 'Random Placement';
@@ -15,10 +16,9 @@ export default function displayGame(game) {
     displayGame(randomGame());
   });
 
-  // // place ship
-  // const placeShip = document.createElement('button');
-  // placeShip.classList.add('randomBtn');
-  // placeShip.textContent = 'Place Ship';
+  // game state
+  const status = document.createElement('h2');
+  status.textContent = 'Loading';
 
   // Titles
   const playerBoardTitle = document.createElement('h1');
@@ -35,7 +35,7 @@ export default function displayGame(game) {
   computerBoardDiv.classList.add('boardComputer');
 
   // Place boards inside div
-  displayBoard(game, playerBoardDiv, computerBoardDiv);
+  displayBoard(game, playerBoardDiv, computerBoardDiv, status);
 
   // Div to put them both in
   const divPlayer = document.createElement('div');
@@ -48,7 +48,12 @@ export default function displayGame(game) {
   compDiv.appendChild(computerBoardDiv);
 
   container.appendChild(divPlayer);
-  container.appendChild(randomBtn);
+  middleDiv.appendChild(randomBtn);
+
+  middleDiv.appendChild(status);
+
+  container.appendChild(middleDiv);
+
   // container.appendChild(placeShip);
 
   container.appendChild(compDiv);
