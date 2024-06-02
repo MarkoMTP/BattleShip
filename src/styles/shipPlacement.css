@@ -1,0 +1,96 @@
+/* Basic reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; /* 10% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; /* Width can be adjusted based on preference */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Space between left and right content */
+}
+
+.content-left,
+.content-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 60%;
+  height: 60%; /* Adjust to make sure both contents fit within the wrapper */
+  border: 1px solid #888; /* Optional: Add a border to differentiate */
+  overflow: hidden;
+  width: min-content; /* Ensure content does not overflow */
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin: 0; /* Ensure no default margin */
+  padding: 0; /* Ensure no default padding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.cellHasShip {
+  background-color: rgb(95, 192, 224);
+}
+
+/* Styles for the ship placement */
+.ship-container {
+  display: flex;
+  width: min-content;
+  border: 1px solid #ccc;
+  margin: 5px;
+}
+
+.ship-container .cell {
+  border: 1px solid #000000;
+}
+
+.ship-container .cellHasShip {
+  background-color: #57cbf9;
+}
