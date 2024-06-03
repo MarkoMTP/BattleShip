@@ -29,7 +29,8 @@ const clearBoard = (div) => {
     div.removeChild(div.firstChild);
   }
 };
-const renderBoard = (gameBoard, container, isPlayer, handleCellClick) => {
+
+const renderBoard = (gameBoard, container, isPlayer, handleCellClick, isPlayerTurn) => {
   gameBoard.board.forEach((row, rowIndex) => {
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
@@ -49,7 +50,7 @@ const renderBoard = (gameBoard, container, isPlayer, handleCellClick) => {
       cell.dataset.row = rowIndex;
       cell.dataset.col = colIndex;
 
-      if (!isPlayer) {
+      if (!isPlayer && isPlayerTurn) {
         cell.addEventListener('click', () => handleCellClick(rowIndex, colIndex));
       }
 
@@ -64,6 +65,7 @@ export default function displayBoard(game, divContP, divContC, status) {
   const playerGameBoard = game.player.gameboard;
   const computerGameBoard = game.computer.gameboard;
   let isPlayerTurn = true;
+
   const handleCellClick = (row, col) => {
     if (!isPlayerTurn) return;
 
@@ -80,14 +82,14 @@ export default function displayBoard(game, divContP, divContC, status) {
       isPlayerTurn = true;
       updateStatus(playerGameBoard, status, computerGameBoard, isPlayerTurn);
       displayBoard(game, divContP, divContC, status);
-    }, 1000);
+    }, 500);
   };
 
   clearBoard(divContP);
   clearBoard(divContC);
 
-  renderBoard(playerGameBoard, divContP, true, handleCellClick);
-  renderBoard(computerGameBoard, divContC, false, handleCellClick);
+  renderBoard(playerGameBoard, divContP, true, handleCellClick, isPlayerTurn);
+  renderBoard(computerGameBoard, divContC, false, handleCellClick, isPlayerTurn);
 
   updateStatus(playerGameBoard, status, computerGameBoard, isPlayerTurn);
 }

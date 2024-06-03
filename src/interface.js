@@ -10,14 +10,15 @@ export default function displayGame(game) {
   const middleDiv = document.createElement('div');
   const randomBtn = document.createElement('button');
   randomBtn.classList.add('randomBtn');
-  randomBtn.textContent = 'Random Placement';
+  randomBtn.textContent = 'Reset';
   randomBtn.addEventListener('click', () => {
     container.innerHTML = '';
     displayGame(randomGame());
   });
 
   // game state
-  const status = document.createElement('h2');
+  const status = document.createElement('h1');
+  status.classList.add('status');
   status.textContent = 'Loading';
 
   // Titles
@@ -26,7 +27,7 @@ export default function displayGame(game) {
   playerBoardTitle.classList.add('playerTitle');
   const compBoardTitle = document.createElement('h1');
   compBoardTitle.textContent = 'Computer Board';
-  compBoardTitle.classList.add('computerTitle');
+  compBoardTitle.classList.add('playerTitle');
 
   // Boards
   const playerBoardDiv = document.createElement('div');
