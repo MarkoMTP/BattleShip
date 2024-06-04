@@ -1,4 +1,4 @@
-import displayBoard from './displayBoard';
+import displayBoard from './displayBoard.js';
 import randomGame from './randomGame';
 import './styles/interface.css';
 
@@ -54,8 +54,6 @@ export default function displayGame(game) {
   middleDiv.appendChild(status);
 
   container.appendChild(middleDiv);
-
-  // container.appendChild(placeShip);
 
   container.appendChild(compDiv);
 }
